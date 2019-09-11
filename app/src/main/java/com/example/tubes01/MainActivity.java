@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,14 +14,23 @@ public class MainActivity extends AppCompatActivity {
     protected FragmentManager fragmentManager;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         this.mainFragment = MainFragment.newInstance();
         this.addFragment = AddFragment.newInstance();
         this.fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction ft = this.fragmentManager.beginTransaction();
+        ft.add(R.id.fragment_container, this.mainFragment);
+        ft.add(R.id.fragment_container, this.addFragment)
+                .addToBackStack(null)
+                .commit();
+        ft.show(this.mainFragment);
+        ft.hide(this.addFragment);
     }
 
     public void changePage(int page) {
