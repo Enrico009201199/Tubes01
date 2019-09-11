@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
@@ -19,6 +20,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     protected ListView list;
     protected TestAdapter adapter;
     protected MainActivity act;
+    protected ModelCalculator model;
 
     public MainFragment() {}
 
@@ -30,6 +32,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        this.model = new ModelCalculator();
         this.act = (MainActivity) getActivity();
         this.tv_1 = view.findViewById(R.id.calculator);
         this.tv_2 = view.findViewById(R.id.tv_result);
@@ -55,9 +58,26 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
         else if(view.getId() == this.btn_clear.getId()) {
             this.adapter.clearData();
+            model.result = 0;
+            model.number = 0;
+            model.operator = '@';
         }
         else if(view.getId() == this.btn_res.getId()) {
-
+            model.result = 0;
+            model.number = 0;
+            model.operator = '@';
+            for(int i = 0; i < this.adapter.getCount(); i++) {
+                String[] split = this.adapter.getItem(i).toString().split(" ");
+                model.operator = split[0].charAt(0);
+                model.number = Integer.parseInt(split[1]);
+                model.calculate();
+            }
+            Bundle data = new Bundle();
+            data.putString("dialog", model.result+"");
+            ResultDialogFragment rdf = ResultDialogFragment.newInstance().newInstance();
+            rdf.setArguments(data);
+            FragmentTransaction ft = this.act.fragmentManager.beginTransaction();
+            rdf.show(ft, "dialog");
         }
         else if(view.getId() == this.btn_save.getId()) {
 

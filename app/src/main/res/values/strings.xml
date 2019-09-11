@@ -4,7 +4,7 @@
     <string-array name="operator">
         <item>+</item>
         <item>-</item>
-        <item>÷</item>
-        <item>x</item>
+        <item>/</item>
+        <item>*</item>
     </string-array>
 </resources>
