@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list">8</dimen>
+    <dimen name="others">1</dimen>
+    <dimen name="total">10</dimen>
+    <dimen name="et_weight">5</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="padding">10px</dimen>
+</resources>

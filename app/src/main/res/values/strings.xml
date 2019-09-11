@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tubes01</string>
+
+    <string-array name="operator">
+        <item>+</item>
+        <item>-</item>
+        <item>÷</item>
+        <item>x</item>
+    </string-array>
+</resources>
