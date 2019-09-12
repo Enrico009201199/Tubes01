@@ -34,6 +34,14 @@ public class TestAdapter extends BaseAdapter {
         return 0;
     }
 
+    public String getItemList() {
+        String res = this.getItem(0).toString();
+        for(int i = 1; i < this.getCount(); i++) {
+            res += ","+this.getItem(i).toString();
+        }
+        return res;
+    }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View itemView = this.act.getLayoutInflater().inflate(R.layout.number_list_item, null);

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Tubes01</string>
+    <string name="openDrawer">Hai</string>
+    <string name="closeDrawer">Bye</string>
 
     <string-array name="operator">
         <item>+</item>

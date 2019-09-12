@@ -22,7 +22,7 @@ public class ModelCalculator {
             this.result *= this.number;
         }
         else if(this.operator == '/') {
-            this.result /= this.number;
+            this.result = (int)(this.result / this.number);
         }
     }
 }
