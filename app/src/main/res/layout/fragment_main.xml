@@ -13,7 +13,9 @@
         android:text=" Calculator"
         android:layout_weight="0.5"
         android:textSize="20dp"
-        android:background="@drawable/back">
+        android:background="@drawable/back"
+        android:fontFamily="@font/montserrat"
+        android:textAlignment="center">
     </TextView>
 
     <TextView
@@ -22,7 +24,9 @@
         android:layout_height="0dp"
         android:text="0"
         android:layout_weight="0.5"
-        android:textSize="20dp">
+        android:textSize="20dp"
+        android:fontFamily="@font/montserrat"
+        android:textAlignment="center">
     </TextView>
 
     <ListView
@@ -55,8 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/add"
-            android:gravity="center"
-            android:textAlignment="viewStart">
+            android:gravity="center">
         </TextView>
     </LinearLayout>
 </LinearLayout>

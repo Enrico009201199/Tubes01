@@ -23,6 +23,7 @@
             android:textSize="23dp"
             android:layout_weight="@dimen/et_weight"
             android:text="num"
+            android:fontFamily="@font/montserrat"
             />
     </LinearLayout>
 
@@ -31,5 +32,7 @@
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_delete" />
+        android:background="@android:drawable/ic_menu_delete"
+        android:tint="@color/colorTrash"
+        />
 </LinearLayout>

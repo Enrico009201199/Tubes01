@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,10 +15,12 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     protected MainFragment mainFragment;
     protected AddFragment addFragment;
+    protected RightFragment rightFragment;
     protected FragmentManager fragmentManager;
     protected Penyimpan penyimpan;
     protected Toolbar toolbar;
     protected DrawerLayout drawer;
+    protected MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         this.mainFragment = MainFragment.newInstance();
         this.addFragment = AddFragment.newInstance();
         this.fragmentManager = this.getSupportFragmentManager();
+        this.rightFragment = (RightFragment) this.fragmentManager.findFragmentById(R.id.right_fragment);
         this.penyimpan = new Penyimpan(this);
+        this.presenter = new MainPresenter(this);
         this.toolbar = this.findViewById(R.id.toolbar);
         this.drawer = this.findViewById(R.id.drawer_layout);
         this.setSupportActionBar(this.toolbar);
@@ -78,11 +83,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     protected void onResume() {
         super.onResume();
-        this.mainFragment.adapter.clearData();
+        this.presenter.clearData();
         String[] split = this.penyimpan.getNumbers().split(",");
         if(!split[0].equals("")) {
             for (int i = 0; i < split.length; i++) {
-                this.mainFragment.adapter.addLine(split[i]);
+                this.presenter.addLine(split[i]);
             }
         }
     }

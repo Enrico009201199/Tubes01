@@ -6,10 +6,9 @@
     android:background="@android:color/white">
 
     <TextView
-        android:id="@+id/right"
+        android:id="@+id/tv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:text="History"/>
+        android:textAlignment="viewStart"/>
 
 </LinearLayout>

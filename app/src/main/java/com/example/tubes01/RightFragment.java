@@ -38,7 +38,8 @@ public class RightFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_right, container, false);
-        this.tv = view.findViewById(R.id.right);
+        this.tv = view.findViewById(R.id.tv_history);
+        this.tv.setText("History\n");
         this.act = (MainActivity)getActivity();
         return view;
     }

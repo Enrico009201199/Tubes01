@@ -50,32 +50,37 @@ public class LeftFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         if(view.getId() == this.btn_clear.getId()) {
-            this.act.mainFragment.adapter.clearData();
-            this.act.addFragment.model.result = 0;
-            this.act.addFragment.model.number = 0;
-            this.act.addFragment.model.operator = '@';
+            this.act.presenter.clearData();
+            this.act.presenter.getModel().result = 0;
+            this.act.presenter.getModel().number = 0;
+            this.act.presenter.getModel().operator = '@';
             this.act.penyimpan.sharedPref.edit().clear();
-            this.act.penyimpan.saveNumber(this.act.mainFragment.adapter.getItemList());
+            this.act.penyimpan.saveNumber(this.act.presenter.getItemList());
+            this.act.rightFragment.tv.setText("History\n");
         }
         else if(view.getId() == this.btn_result.getId()) {
-            this.act.addFragment.model.result = 0;
-            this.act.addFragment.model.number = 0;
-            this.act.addFragment. model.operator = '@';
-            for(int i = 0; i < this.act.mainFragment.adapter.getCount(); i++) {
-                String[] split = this.act.mainFragment.adapter.getItem(i).toString().split(" ");
-                this.act.addFragment.model.operator = split[0].charAt(0);
-                this.act.addFragment.model.number = Integer.parseInt(split[1]);
-                this.act.addFragment.model.calculate();
+            String message = "0";
+            this.act.presenter.getModel().result = 0;
+            this.act.presenter.getModel().number = 0;
+            this.act.presenter.getModel().operator = '@';
+            for(int i = 0; i < this.act.presenter.getCount(); i++) {
+                String[] split = this.act.presenter.getItem(i).toString().split(" ");
+                this.act.presenter.getModel().operator = split[0].charAt(0);
+                this.act.presenter.getModel().number = Integer.parseInt(split[1]);
+                message += " " + this.act.presenter.getModel().operator + " " + this.act.presenter.getModel().number;
+                this.act.presenter.getModel().calculate();
             }
+            message += " =\n" + this.act.presenter.getModel().result + "\n";
             Bundle data = new Bundle();
-            data.putString("dialog", this.act.addFragment.model.result+"");
-            ResultDialogFragment rdf = ResultDialogFragment.newInstance().newInstance();
+            data.putString("dialog", this.act.presenter.getModel().result+"");
+            ResultDialogFragment rdf = ResultDialogFragment.newInstance();
             rdf.setArguments(data);
+            this.act.rightFragment.tv.append(message);
             FragmentTransaction ft = this.act.fragmentManager.beginTransaction();
             rdf.show(ft, "dialog");
         }
         else if(view.getId() == this.btn_save.getId()) {
-            this.act.penyimpan.saveNumber(this.act.mainFragment.adapter.getItemList());
+            this.act.penyimpan.saveNumber(this.act.presenter.getItemList());
         }
         this.act.drawer.closeDrawers();
     }

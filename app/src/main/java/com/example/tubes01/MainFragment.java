@@ -17,7 +17,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     protected FloatingActionButton btn_add;
     protected FragmentListener listener;
     protected ListView list;
-    protected TestAdapter adapter;
     protected MainActivity act;
 
     public MainFragment() {}
@@ -37,8 +36,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         this.btn_add.setOnClickListener(this);
 
         this.list = view.findViewById(R.id.list_number);
-        this.adapter = new TestAdapter(this.act);
-        this.list.setAdapter(this.adapter);
+        this.list.setAdapter(this.act.presenter.getAdapter());
         return view;
     }
 
