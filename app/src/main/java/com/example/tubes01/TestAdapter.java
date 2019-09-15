@@ -35,11 +35,16 @@ public class TestAdapter extends BaseAdapter {
     }
 
     public String getItemList() {
-        String res = this.getItem(0).toString();
-        for(int i = 1; i < this.getCount(); i++) {
-            res += ","+this.getItem(i).toString();
+        if(this.getCount() != 0) {
+            String res = this.getItem(0).toString();
+            for (int i = 1; i < this.getCount(); i++) {
+                res += "," + this.getItem(i).toString();
+            }
+            return res;
         }
-        return res;
+        else {
+            return null;
+        }
     }
 
     @Override

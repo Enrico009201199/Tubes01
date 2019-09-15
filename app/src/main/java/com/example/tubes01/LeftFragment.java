@@ -51,22 +51,24 @@ public class LeftFragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         if(view.getId() == this.btn_clear.getId()) {
             this.act.mainFragment.adapter.clearData();
-            this.act.mainFragment.model.result = 0;
-            this.act.mainFragment.model.number = 0;
-            this.act.mainFragment.model.operator = '@';
+            this.act.addFragment.model.result = 0;
+            this.act.addFragment.model.number = 0;
+            this.act.addFragment.model.operator = '@';
+            this.act.penyimpan.sharedPref.edit().clear();
+            this.act.penyimpan.saveNumber(this.act.mainFragment.adapter.getItemList());
         }
         else if(view.getId() == this.btn_result.getId()) {
-            this.act.mainFragment.model.result = 0;
-            this.act.mainFragment.model.number = 0;
-            this.act.mainFragment. model.operator = '@';
+            this.act.addFragment.model.result = 0;
+            this.act.addFragment.model.number = 0;
+            this.act.addFragment. model.operator = '@';
             for(int i = 0; i < this.act.mainFragment.adapter.getCount(); i++) {
                 String[] split = this.act.mainFragment.adapter.getItem(i).toString().split(" ");
-                this.act.mainFragment.model.operator = split[0].charAt(0);
-                this.act.mainFragment.model.number = Integer.parseInt(split[1]);
-                this.act.mainFragment.model.calculate();
+                this.act.addFragment.model.operator = split[0].charAt(0);
+                this.act.addFragment.model.number = Integer.parseInt(split[1]);
+                this.act.addFragment.model.calculate();
             }
             Bundle data = new Bundle();
-            data.putString("dialog", this.act.mainFragment.model.result+"");
+            data.putString("dialog", this.act.addFragment.model.result+"");
             ResultDialogFragment rdf = ResultDialogFragment.newInstance().newInstance();
             rdf.setArguments(data);
             FragmentTransaction ft = this.act.fragmentManager.beginTransaction();

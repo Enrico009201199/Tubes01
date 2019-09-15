@@ -17,6 +17,7 @@ public class AddFragment extends Fragment implements View.OnClickListener{
     protected Button btn_submit;
     protected MainActivity act;
     protected FragmentListener listener;
+    protected ModelCalculator model;
 
     public AddFragment () {}
 
@@ -29,6 +30,7 @@ public class AddFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.add_page, container, false);
         this.spinner_operator = view.findViewById(R.id.sp_operator);
         this.act = (MainActivity)getActivity();
+        this.model = new ModelCalculator();
         this.et_operand = view.findViewById(R.id.et_operand);
         this.btn_submit = view.findViewById(R.id.btn_submit);
         this.btn_submit.setOnClickListener(this);
@@ -40,7 +42,10 @@ public class AddFragment extends Fragment implements View.OnClickListener{
         if (view.getId() == this.btn_submit.getId() ) {
             String message = spinner_operator.getSelectedItem().toString();
             String num = this.et_operand.getText().toString();
-            this.act.mainFragment.adapter.addLine(message + " " + num);
+            this.model.operator = message.charAt(0);
+            this.model.number = Integer.parseInt(num);
+            this.model.calculate();
+            this.act.mainFragment.adapter.addLine(message + " " + num + " (Current Result : " + this.model.result + "" +")");
             this.et_operand.setText("");
             this.act.changePage(1);
         }

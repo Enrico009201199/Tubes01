@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         super.onResume();
         this.mainFragment.adapter.clearData();
         String[] split = this.penyimpan.getNumbers().split(",");
-        for(int i = 0; i < split.length; i++) {
-            this.mainFragment.adapter.addLine(split[i]);
+        if(!split[0].equals("")) {
+            for (int i = 0; i < split.length; i++) {
+                this.mainFragment.adapter.addLine(split[i]);
+            }
         }
     }
 }
