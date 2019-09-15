@@ -10,9 +10,12 @@
         android:id="@+id/add"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="Add"
+        android:text="Add Page"
         android:layout_weight="0.5"
         android:textSize="20dp"
+        android:backgroundTint="#9ccc65"
+        android:fontFamily="@font/montserrat"
+        android:textAlignment="center"
         android:background="@drawable/back">
     </TextView>
 
@@ -50,7 +53,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20dp"
-                android:text="Operator :">
+                android:text="Operator :"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#6b9b37">
             </TextView>
 
             <Spinner
@@ -83,7 +88,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Operand :"
-                android:textSize="20dp"></TextView>
+                android:textSize="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="#6b9b37">
+
+            </TextView>
 
             <EditText
                 android:id="@+id/et_operand"
@@ -100,7 +109,10 @@
             android:layout_height="wrap_content"
             android:text="Submit"
             android:textSize="15dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:backgroundTint="#6b9b37"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/montserrat">
         </Button>
     </LinearLayout>
 </LinearLayout>

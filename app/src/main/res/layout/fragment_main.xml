@@ -10,11 +10,12 @@
         android:id="@+id/calculator"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text=" Calculator"
+        android:text="My Calculator"
         android:layout_weight="0.5"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:background="@drawable/back"
         android:fontFamily="@font/montserrat"
+        android:backgroundTint="#9ccc65"
         android:textAlignment="center">
     </TextView>
 
@@ -24,17 +25,19 @@
         android:layout_height="0dp"
         android:text="0"
         android:layout_weight="0.5"
-        android:textSize="20dp"
+        android:textSize="24dp"
+        android:background="@drawable/back"
         android:fontFamily="@font/montserrat"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        android:backgroundTint="#9ccc65"
+        android:textColor="#ffffff">
     </TextView>
 
     <ListView
         android:id="@+id/list_number"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-        android:background="@drawable/back">
+        android:layout_weight="8">
 
     </ListView>
 
@@ -43,23 +46,17 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:gravity="center">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-
-        android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
             android:layout_margin="16dp"
             android:clickable="true"
-            android:id="@+id/btn_add"
-            />
-        <TextView
-            android:id="@+id/tv_add"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/add"
-            android:gravity="center">
-        </TextView>
+            app:backgroundTint="#6b9b37"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_add_black_24dp"
+            app:useCompatPadding="false"/>
     </LinearLayout>
 </LinearLayout>
