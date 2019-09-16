@@ -14,13 +14,14 @@
     <LinearLayout
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
-        android:layout_weight="8">
+        android:layout_weight="9">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="23dp"
+            android:textColor="#6b9b37"
             android:layout_weight="@dimen/et_weight"
             android:text="num"
             android:fontFamily="@font/montserrat"
@@ -32,7 +33,7 @@
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_delete"
+        android:background="@drawable/ic_delete_black_24dp"
         android:tint="@color/colorTrash"
         />
 </LinearLayout>

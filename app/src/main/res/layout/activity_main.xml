@@ -20,7 +20,8 @@
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:backgroundTint="#6b9b37">
         </androidx.appcompat.widget.Toolbar>
         <FrameLayout
             android:layout_width="match_parent"
