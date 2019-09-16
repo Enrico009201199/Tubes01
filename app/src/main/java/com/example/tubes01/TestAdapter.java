@@ -5,16 +5,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestAdapter extends BaseAdapter {
-    private Activity act;
+public class TestAdapter extends BaseAdapter implements View.OnClickListener {
+    private MainActivity act;
     private List<String> list;
+    private TextView cek;
+    private ImageButton btn;
+    private int idx;
 
-    public TestAdapter(Activity act) {
+    public TestAdapter(MainActivity act) {
         this.act = act;
         this.list = new ArrayList<String>();
 
@@ -51,8 +55,11 @@ public class TestAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View itemView = this.act.getLayoutInflater().inflate(R.layout.number_list_item, null);
-        TextView tvNama = itemView.findViewById(R.id.tv_title);
-        tvNama.setText(this.list.get(i));
+        this.idx = i;
+        this.cek = itemView.findViewById(R.id.tv_title);
+        this.btn = itemView.findViewById(R.id.delete);
+        this.btn.setOnClickListener(this);
+        this.cek.setText(this.list.get(i));
         return itemView;
     }
 
@@ -61,8 +68,20 @@ public class TestAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    public void deleteLine(int i) {
+        this.list.remove(i);
+        this.notifyDataSetChanged();
+    }
+
     public void clearData() {
         this.list.clear();
         this.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == this.btn.getId()) {
+            this.deleteLine(this.list.indexOf(this.cek.getText().toString()));
+        }
     }
 }

@@ -11,7 +11,7 @@ public class MainPresenter {
     private ModelCalculator model;
     private TestAdapter adapter;
 
-    public MainPresenter(Activity act) {
+    public MainPresenter(MainActivity act) {
         this.model = new ModelCalculator();
         this.adapter = new TestAdapter(act);
     }

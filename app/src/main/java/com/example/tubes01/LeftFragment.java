@@ -81,6 +81,7 @@ public class LeftFragment extends Fragment implements View.OnClickListener
         }
         else if(view.getId() == this.btn_save.getId()) {
             this.act.penyimpan.saveNumber(this.act.presenter.getItemList());
+            this.act.penyimpan.saveResult(this.act.presenter.getModel().result);
         }
         this.act.drawer.closeDrawers();
     }

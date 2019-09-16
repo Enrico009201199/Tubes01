@@ -90,5 +90,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
                 this.presenter.addLine(split[i]);
             }
         }
+        this.presenter.getModel().result = this.penyimpan.getResult();
     }
 }
